@@ -1,0 +1,12 @@
+export const SET_TOKEN = 'SET_TOKEN';
+export const SET_MESSAGE = 'SET_MESSAGE';
+export const SET_ERROR = 'SET_ERROR';
+export const RESET_ERROR = 'RESET_ERROR';
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
+export const SET_MESSAGE_POPUP = 'SET_MESSAGE_POPUP';
+export const RESET_MESSAGE_POPUP = 'RESET_MESSAGE_POPUP';
+export const SET_OTP_STATUS = 'SET_OTP_STATUS';
+export const SET_OTP_TOKEN = 'SET_OTP_TOKEN';
+export const VALIDATE_OTP = 'VALIDATE_OTP';

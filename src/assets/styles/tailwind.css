@@ -1,0 +1,22 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer utilities {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu::before {
+    content: '';
+    width: 30px;
+    background-color: red;
+  }
+
+  .Typewriter__wrapper {
+    margin-left: 1rem;
+    color: orange;
+  }
+}

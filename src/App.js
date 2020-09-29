@@ -1,25 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Suspense, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routers';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  actFetchToken,
+  actFetchUserProfileRequest,
+  resetMessagePopup,
+} from './store/actions';
+import { fetchToken } from './utils/token';
+import { Header } from './components';
 function App() {
+  const popup = useSelector((state) => state.popup);
+  const token = useSelector((state) => state.token.accessToken);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    popup.success ? toast.success(popup.message) : toast.error(popup.message);
+    dispatch(resetMessagePopup());
+  }, [dispatch, popup.message, popup.success]);
+
+  useEffect(() => {
+    const isToken = fetchToken();
+    if (isToken) {
+      dispatch(actFetchToken(isToken));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(actFetchUserProfileRequest());
+    }
+  }, [dispatch, token]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <ToastContainer />
+        <Header />
+        <Routes />
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
