@@ -18800,6 +18800,21 @@ video {
   animation: bounce 1s infinite;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu::before {
+  content: '';
+  width: 30px;
+  background-color: red;
+}
+
+.Typewriter__wrapper {
+  margin-left: 1rem;
+  color: orange;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
