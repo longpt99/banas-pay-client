@@ -3,10 +3,10 @@ import queryString from 'query-string';
 import { fetchToken } from './token';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:1337/api',
+  baseURL: 'https://banas-pay-longpt99.herokuapp.com/api',
   headers: {
     'content-type': 'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:3000',
+    'Access-Control-Allow-Origin': 'https://banas-pay-longpt99.netlify.app',
   },
   paramsSerializer: (params) => queryString.stringify(params),
 });
